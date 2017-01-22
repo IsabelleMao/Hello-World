@@ -1,2 +1,2 @@
-# funny-attempt-1
-In which I pretend that I know how to code anything.
+# First repository!
+Not sure how anything works, but I'm giving this another try now.
