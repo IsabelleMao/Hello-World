@@ -1,35 +1,8 @@
-#
-#                       _oo0oo_
-#                      o8888888o
-#                      88" . "88
-#                      (| -_- |)
-#                      0\  =  /0
-#                    ___/`---'\___
-#                  .' \\|     |// '.
-#                 / \\|||  :  |||// \
-#                / _||||| -:- |||||- \
-#               |   | \\\  -  /// |   |
-#               | \_|  ''\---/''  |_/ |
-#               \  .-\__  '-'  ___/-. /
-#             ___'. .'  /--.--\  `. .'___
-#          ."" '<  `.___\_<|>_/___.' >' "".
-#         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
-#         \  \ `_.   \_ __\ /__ _/   .-` /  /
-#     =====`-.____`.___ \_____/___.-`___.-'=====
-#                       `=---='
-#
-#
-#     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-
-
-
-
 #Ask the user for input
 input_for_sorting = input("Paste in (or type, I won't judge) a list of things you'd like to be sorted!")
-split_input = input_for_sorting.split()
-length_of_list = len(split_input)
+split = input("What would you like this list to be split by? If you leave it blank, it will be space")
+split_input = input_for_sorting.split(split) #Split by whatever
+length_of_list = len(split_input) #the length of the list
 
 #The sorter
 #Sort all the words.
@@ -47,5 +20,3 @@ for index in range(length_of_list):
 #Print the new list, one by one.
 for index in range(length_of_list):
   print(split_input[index] + " ")
-  
-#https://www.youtube.com/watch?v=WaNLJf8xzC4
