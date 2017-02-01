@@ -19,16 +19,6 @@ def force_number(message):
             print("Please enter a valid integer!!!")
     return number
 
-def pick_up_person(current_floor, pressed_fl):
-  while(current_floor != pressed_floor): #If the elevator is not at the current floor yet
-        
-    #Get the elevator to pick up the person
-        if(current_floor < pressed_floor): #if elevator is lower
-            current_floor += 1 #go up
-            print("The elevator is now on floor {}".format(current_floor))
-        else:
-            current_floor -= 1 #go down
-            print("The elevator is now on floor {}".format(current_floor))
 ############################################################    
 
 #Virtual elevator settings
