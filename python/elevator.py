@@ -1,38 +1,46 @@
 ############################################################
 #helper functions
-def absolute_difference(value1, value2): #get the absolute value of a number.
+
+#Get the absolute value of a number.
+def absolute_difference(value1, value2):
     difference = value1 - value2
     if difference >= 0:
         return difference
     else:
         return -difference #If the number is below 0, return the positive form of it.
     
-def force_number(message): #force user to enter a valid integer
+#Force user to enter a valid integer
+def force_number(message):
     while True:
         try:
             number = int(input(message))
             break
-        except ValueError:
-            print("Please enter a valid integer!!!")
-        except NameError:
-            print("Please enter a valid integer!!!")
-        except SyntaxError:
-            print("Please enter a valid integer!!!")
-        except TypeError:
+        except:
             print("Please enter a valid integer!!!")
     return number
 
+def pick_up_person(current_floor, pressed_fl):
+  while(current_floor != pressed_floor): #If the elevator is not at the current floor yet
+        
+    #Get the elevator to pick up the person
+        if(current_floor < pressed_floor): #if elevator is lower
+            current_floor += 1 #go up
+            print("The elevator is now on floor {}".format(current_floor))
+        else:
+            current_floor -= 1 #go down
+            print("The elevator is now on floor {}".format(current_floor))
 ############################################################    
 
 #Virtual elevator settings
-max_floor = 36
-min_floor = -1
-resting_floor = (absolute_difference(max_floor, min_floor))/2
+max_floor = 51 #the highest floor possible for the elevator
+min_floor = 2 #the lowest floor possible for the elevator
+resting_floor = int(round((max_floor + min_floor)/2))
+#The floor the elevator rests on, because it's halfway
 
-
+############################################################
 def elevate(pressed_floor, desired_floor): #Elevator for 1 person
     
-    current_floor = 1
+    current_floor = resting_floor
     print("The elevator is currently on floor {}".format(current_floor))
     
     while(current_floor != pressed_floor): #If the elevator is not at the current floor yet
