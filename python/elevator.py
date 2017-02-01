@@ -1,4 +1,12 @@
 ############################################################
+#Virtual elevator settings
+max_floor = 51 #the highest floor possible for the elevator
+min_floor = 2 #the lowest floor possible for the elevator
+resting_floor = int(round((max_floor + min_floor)/2))
+#The floor the elevator rests on, because it's halfway
+
+############################################################
+
 #helper functions
 
 #Get the absolute value of a number.
@@ -15,19 +23,22 @@ def force_number(message):
         try:
             number = int(input(message))
             break
-        except:
+        except: #if there's an error
             print("Please enter a valid integer!!!")
     return number
 
-############################################################    
+#THE ERROR LIES HERE
+def real_floor(message):
+  floor = force_number(message)
+  while (floor < min_floor or floor > max_floor):
+    print("The elevator can't go on that floor!")
+    floor = int(input(message))
+  else:
+    return floor
+    
+  
+############################################################   
 
-#Virtual elevator settings
-max_floor = 51 #the highest floor possible for the elevator
-min_floor = 2 #the lowest floor possible for the elevator
-resting_floor = int(round((max_floor + min_floor)/2))
-#The floor the elevator rests on, because it's halfway
-
-############################################################
 def elevate(pressed_floor, desired_floor): #Elevator for 1 person
     
     current_floor = resting_floor
@@ -55,6 +66,6 @@ def elevate(pressed_floor, desired_floor): #Elevator for 1 person
             print("The elevator goes up, to floor {}".format(current_floor))
     print("You're here!")
           
-your_floor = force_number("Which floor are you currently on?")
-destination = force_number("Which floor do you want to go to?")
+your_floor = real_floor("Which floor are you currently on?")
+destination = real_floor("Which floor do you want to go to?")
 elevate(your_floor, destination)
