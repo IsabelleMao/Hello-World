@@ -27,14 +27,15 @@ def force_number(message):
             print("Please enter a valid integer!!!")
     return number
 
-#THE ERROR LIES HERE
-def real_floor(message):
-  floor = force_number(message)
-  while (floor < min_floor or floor > max_floor):
-    print("The elevator can't go on that floor!")
-    floor = int(input(message))
-  else:
-    return floor
+#Make sure that the floor is a valid one.
+def real_floor(message, max_floor, min_floor):
+  while True:
+        number = force_number(message)
+        if number <= max_floor and number >= min_floor:
+          return number
+          break
+        else:
+          print("Not a valid floor!")
     
   
 ############################################################   
@@ -66,6 +67,6 @@ def elevate(pressed_floor, desired_floor): #Elevator for 1 person
             print("The elevator goes up, to floor {}".format(current_floor))
     print("You're here!")
           
-your_floor = real_floor("Which floor are you currently on?")
-destination = real_floor("Which floor do you want to go to?")
+your_floor = real_floor("Which floor are you currently on?", max_floor, min_floor)
+destination = real_floor("Which floor do you want to go to?", max_floor, min_floor)
 elevate(your_floor, destination)
