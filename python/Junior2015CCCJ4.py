@@ -40,9 +40,13 @@ for counter in range(1, 121):
 if hour < 10:
     hour = str(hour)
     hour = "0" + hour
+else:
+    hour = str(hour)
 if minute < 10:
     minute = str(minute)
     minute = "0" + minute
+else:
+    minute = str(minute)
 
 #Make a valid output.
 output = hour , ":" , minute
