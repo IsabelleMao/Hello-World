@@ -70,3 +70,4 @@ def elevate(pressed_floor, desired_floor): #Elevator for 1 person
 your_floor = real_floor("Which floor are you currently on?", max_floor, min_floor)
 destination = real_floor("Which floor do you want to go to?", max_floor, min_floor)
 elevate(your_floor, destination)
+input("Finished running. Enter anything to continue.")
