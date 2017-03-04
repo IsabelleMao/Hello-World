@@ -3,17 +3,20 @@ import math
 
 #Make the input easier to read
 def ezyfy(raw):
+  dupe = raw
   #All in lowercase, no extra spaces.
-  raw = raw.lower().strip()
+  raw = dupe.lower().strip()
   return raw
 
-#Add all arguments together.
+#Add all arguments together
 def add(*args):
   total_sum = 0
-  indices = len(args)
-  for number in range(indices):
+  length = len(args)
+  for number in range(length):
     total_sum += args[number]
   return total_sum
+
+#Split stuff by space, then hand in as parameter.
 
 #Main.
 def stupid_calc():
@@ -37,8 +40,8 @@ def stupid_calc():
   """
   print("Enter HELP for a list of possible actions.")
   while True:
-      print("Ready for a command!")
-      command = input()
+      print("ready for a new command")
+      command = input("")
       command = ezyfy(command)
       
       #Print help docs
@@ -53,12 +56,10 @@ def stupid_calc():
       
       #add
       elif command == "add":
-        print("Alright. Enter a list of things you'd like added, each separated by a space.")
-        #Get numbers and make a list
+        print("Alright. Enter a list of numbers you want added, EACH SEPARATED BY A SPACE, and I'll return to you the sum!")
         numbers = input()
         numbers = numbers.split()
         numbers = [int(x) for x in numbers]
-        
-        print("The sum of the numbers is {}".format(add(*numbers)))
-        
+        print("The sum of your numbers is {}".format(add(*numbers)))
+
 stupid_calc()
