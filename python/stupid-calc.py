@@ -16,6 +16,11 @@ def add(*args):
     total_sum += args[number]
   return total_sum
 
+#Split by space and return as a list of integers
+def split(arg):
+  arg = arg.split()
+  arg = [int(x) for x in arg]
+  return arg
 #Split stuff by space, then hand in as parameter.
 
 #Main.
@@ -40,9 +45,12 @@ def stupid_calc():
   """
   print("Enter HELP for a list of possible actions.")
   while True:
-      print("ready for a new command")
-      command = input("")
+      print("""------------------------------------------
+ready for a new command
+------------------------------------------""")
+      command = input()
       command = ezyfy(command)
+      print("------------------------------------------")
       
       #Print help docs
       if command == "help":
@@ -54,12 +62,14 @@ def stupid_calc():
         #quit
         return
       
-      #add
+      #ADD-------
       elif command == "add":
-        print("Alright. Enter a list of numbers you want added, EACH SEPARATED BY A SPACE, and I'll return to you the sum!")
+        print("""Alright. Enter a list of numbers you want added, EACH SEPARATED BY A SPACE, and I'll return to you the sum!
+------------------------------------------""")
         numbers = input()
-        numbers = numbers.split()
-        numbers = [int(x) for x in numbers]
-        print("The sum of your numbers is {}".format(add(*numbers)))
+        numbers = split(numbers)
+        numbers = add(*numbers)
+        print("""------------------------------------------
+The sum of your numbers is {}""".format(numbers))
 
 stupid_calc()
