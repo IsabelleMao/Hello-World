@@ -1,14 +1,14 @@
-#I wonder what this does??
+#Style guide: New 'lines' shall be in the same print statement, or directly following an input.
 import math
 
-#Make the input easier to read
+#make the input easier to read
 def ezyfy(raw):
   dupe = raw
   #All in lowercase, no extra spaces.
   raw = dupe.lower().strip()
   return raw
 
-#Add all arguments together
+#add all arguments together
 def add(*args):
   total_sum = 0
   length = len(args)
@@ -16,14 +16,22 @@ def add(*args):
     total_sum += args[number]
   return total_sum
 
-#Split by space and return as a list of integers
+#subtract an unknown amount of numbers from a given number
+def subtract(original, *args):
+  length = len(args)
+  for sub in range(length):
+    original -= args[sub]
+  return original
+#split by space and return as a list of float numbers
 def split(arg):
   arg = arg.split()
-  arg = [int(x) for x in arg]
+  arg = [float(x) for x in arg]
   return arg
 #Split stuff by space, then hand in as parameter.
 
-#Main.
+#------------------------------------------#
+
+#main calculator
 def stupid_calc():
   
   """
@@ -43,33 +51,48 @@ def stupid_calc():
   format: COMMAND- function
   Type the command to do the function. Note: not case sensitive :)
   """
-  print("Enter HELP for a list of possible actions.")
+  print("""Enter HELP for a list of possible actions.
+------------------------------------------""")
   while True:
-      print("""------------------------------------------
-ready for a new command
+      print("""ready for a new command
 ------------------------------------------""")
       command = input()
       command = ezyfy(command)
       print("------------------------------------------")
       
-      #Print help docs
+      #print help
       if command == "help":
         print(stupid_calc.__doc__)
         
-      #Quit everything!!!
+      #exit
       elif command == "exit":
         print("Hope you had fun. Enjoy your day!")
         #quit
         return
       
-      #ADD-------
+      #add
       elif command == "add":
         print("""Alright. Enter a list of numbers you want added, EACH SEPARATED BY A SPACE, and I'll return to you the sum!
 ------------------------------------------""")
         numbers = input()
         numbers = split(numbers)
-        numbers = add(*numbers)
+        result = add(*numbers)
         print("""------------------------------------------
-The sum of your numbers is {}""".format(numbers))
+The sum of your numbers is {}""".format(result))
+
+      #subtract
+      elif command == "subtract":
+        print("""Certainly. Enter a single number to subtract from.
+------------------------------------------""")
+        original = float(input())
+        print("------------------------------------------")
+        print("""Now, enter a number/numbers you want subtracted from {}. Separate more than one number with a space.
+------------------------------------------""".format(original))
+        subtract_this = input()
+        print("------------------------------------------")
+        subtract_this = split(subtract_this)
+        result = subtract(original, *subtract_this)
+        print("""Your result is {}
+------------------------------------------""".format(result))
 
 stupid_calc()
