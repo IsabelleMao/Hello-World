@@ -32,8 +32,10 @@ def quadratic_equation(a, b, c):
     elif discriminant == 0: #Only one solution
         return [1, -b/2*a]
     else:
-        sol1 = (-b + discriminant) / 2 * a
-        sol2 = (-b - discriminant) / 2 * a
+        sol1 = (-b + math.sqrt(discriminant))
+        sol1 /= (2 * a)
+        sol2 = (-b - math.sqrt(discriminant))
+        sol2 /= (2 * a)
         return [2, sol1, sol2]
       
     
