@@ -1,5 +1,5 @@
 #Style guide: New 'lines' shall be in the same print statement, or directly following an input.
-import math
+import math #Very funny, I know
 
 #make the input easier to read
 def ezyfy(raw):
@@ -22,6 +22,21 @@ def subtract(original, *args):
   for sub in range(length):
     original -= args[sub]
   return original
+  
+#solve for x in a quadratic formula 
+#NOT DONE IMPLEMENTING
+  def quadratic(a, b, c):
+    discriminant = (b**2) - (4 * a * c)
+    if discriminant < 0: #No solutions, 'cause they're imaginary
+      return None
+    elif discriminant == 0: #Only one solution
+      return -b/2*a
+    else:
+      sol1 = (-b + discriminant) / 2 * a
+      sol2 = (-b - discriminant) / 2 * a
+      return [sol1, sol2]
+      
+    
 #split by space and return as a list of float numbers
 def split(arg):
   arg = arg.split()
@@ -42,11 +57,14 @@ def stupid_calc():
   -COMMONLY USED-
   -------------
   ADD
-  DIVIDE
+  DIVIDE - WIP
   SUBTRACT
-  MULTIPLY
+  MULTIPLY- WIP
   SUBTRACT
   -------------
+  -FORMULAS-
+  -------------
+  QUADRATIC FORMULA
   
   format: COMMAND- function
   Type the command to do the function. Note: not case sensitive :)
