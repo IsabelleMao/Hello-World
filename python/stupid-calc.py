@@ -5,6 +5,30 @@ import math #Very funny, I know
 def nl():
     print("------------------------------------------")
     
+#choose the command to do next!
+def process_command(command):
+    #print help
+    if command == "help":
+        print(stupid_calc.__doc__)
+    #add
+    elif command == "add":
+        add_func()
+    #subtract
+    elif command == "subtract":
+        subtract_func()
+    #multiply
+    elif command == "multiply":
+        multiply_func()
+    #divide
+    elif command == "divide":
+        divide_func()
+    #quadratic equation/formula
+    elif command == "quadratic formula" or command == "quadratic equation" or command == "qe":
+        quadratic_equation_func()
+    elif command == "exit":
+        print("Hope you had fun. Enjoy your day!")
+        running = False
+    nl()
     
 #The function for adding
 def add_func():
@@ -132,7 +156,6 @@ def split(arg):
 
 #main calculator
 def stupid_calc():
-  
     """
     Possible Actions:
     
@@ -153,36 +176,19 @@ def stupid_calc():
     format: COMMAND- function
     Type the command to do the function. Note: not case sensitive :)
     """
+    running = True
     print("Enter HELP for a list of possible actions.")
     nl()
-    while True:
+    while running == True:
         print("ready for a new command")
         nl()
         command = input().lower().strip()
       #there would be a nl here
         nl()
-      #print help
-        if command == "help":
-            print(stupid_calc.__doc__)
       #exit
-        elif command == "exit":
+        if command == "exit":
             print("Hope you had fun. Enjoy your day!")
             return
-      #add
-        elif command == "add":
-            add_func()
-      #subtract
-        elif command == "subtract":
-            subtract_func()
-      #multiply
-        elif command == "multiply":
-            multiply_func()
-       #divide
-        elif command == "divide":
-            divide_func()
-       #quadratic equation/formula
-        elif command == "quadratic formula" or command == "quadratic equation" or command == "qe":
-            quadratic_equation_func()
-        nl()
+        process_command(command)
 
 stupid_calc()
