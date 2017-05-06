@@ -11,17 +11,24 @@ def process_command(command):
     if command == "help":
         print(stupid_calc.__doc__)
     #add
-    elif command == "add":
+    elif command == "add" or command == "+":
         add_func()
     #subtract
-    elif command == "subtract":
+    elif command == "subtract" or command == "-":
         subtract_func()
     #multiply
-    elif command == "multiply":
+    elif command == "multiply" or command == "*":
         multiply_func()
     #divide
-    elif command == "divide":
+    elif command == "divide" or command == "/":
         divide_func()
+    #raise to power
+    elif command == "exponent" or command == "**" or command == "^":
+        exponent_func()
+    elif command == "factorial" or command == "fact":
+        factorial()
+    elif command == "nth triangular number" or command == "tri":
+        terminal_func()
     #quadratic equation/formula
     elif command == "quadratic formula" or command == "quadratic equation" or command == "qe":
         quadratic_equation_func()
@@ -41,7 +48,7 @@ def add_func():
     print("The sum of your numbers is {}".format(result))
     
 #add all arguments together
-def add(*args):
+def add(*args): #that asterisk is beautiful, I agree!
     total_sum = 0
     length = len(args)
     for number in range(length):
@@ -108,6 +115,41 @@ def divide_func():
     quotient = divide(dividend, *divisors)
     print("Your result is {}".format(quotient))
     
+#The function for raising to a power
+def exponent_func():
+    print("Why did the athiest fail his/her test about exponents? Because he/she didn't believe in higher powers! Enter your base.")
+    nl()
+    base = float(input())
+    nl()
+    print("To what exponent would you like this raised to?")
+    nl()
+    power = float(input())
+    nl()
+    result = math.pow(base, power)
+    print("Your result is {}".format(result))
+
+def factorial():
+    print("!!! Enter an integer !!!")
+    nl()
+    fact = int(input())
+    print("Your result is {}".format(math.factorial(fact)))
+    
+#nth triangular number.
+def terminal_func():
+    print("enter your starting number.")
+    nl()
+    start = int(input())
+    nl()
+    result = (start ** 2 + start) / 2
+    print("Your result is {}".format(result))
+    
+def fibbonaci_func():
+    print("Enter to how many terms you want your Fibonnaci sequence to be. If you'd ONLY like the nth term, add 'n' to the end of your  ")
+    nl()
+    choice = input.strip().lower()
+    if choice == "n":
+        
+    
 #solve for x in a quadratic formula 
 def quadratic_equation(a, b, c):
     discriminant = (b**2) - (4 * a * c)
@@ -163,17 +205,23 @@ def stupid_calc():
     
     -COMMONLY USED-
     -------------
-    ADD
-    SUBTRACT
-    MULTIPLY
-    DIVIDE
-    EXPONENT - WIP
+    ADD (+)- add an arbitrary number of numbers
+    SUBTRACT (-)- subtract an arbitrary number of numbers from a single number
+    MULTIPLY (*) - get the product of an arbitrary number of numbers
+    DIVIDE (/)- divide a single number by an arbitrary NoN
+    EXPONENT (**, ^)- raise a number to a power
+    -------------
+    -LESS COMMONLY USED-
+    -------------
+    FACTORIAL (fact) - Multiply an integer by all the ones before it.
+    Nth TRIANGULAR NUMBER (tri) - Like factorial, but with adding rather than multiplying
+    FIBONNACI SEQUENCE (fib, fibonnaci)- The famous 1, 1, 2, 3, 5, 8... FIB
     -------------
     -FORMULAS-
     -------------
-    QUADRATIC FORMULA
+    QUADRATIC FORMULA (quadratic equation, qe)- solve a 2nd degree equation
     
-    format: COMMAND- function
+    format: COMMAND (aliases)- function
     Type the command to do the function. Note: not case sensitive :)
     """
     running = True
@@ -183,9 +231,8 @@ def stupid_calc():
         print("ready for a new command")
         nl()
         command = input().lower().strip()
-      #there would be a nl here
         nl()
-      #exit
+        #exit
         if command == "exit":
             print("Hope you had fun. Enjoy your day!")
             return
